@@ -144,6 +144,170 @@ section{
   background:var(--section);
 }
 
+/* ===== APPLY SECTION ===== */
+
+.apply-section{
+  padding:120px 8%;
+  background:#CBB69E;
+  color:#1b1b1b;
+}
+
+.apply-wrapper{
+  max-width:900px;
+  margin:auto;
+}
+
+/* INTRO BLOCK */
+
+.apply-intro{
+  background:rgba(255,255,255,.75);
+  padding:40px;
+  border-radius:18px;
+  margin-bottom:60px;
+  backdrop-filter:blur(8px);
+}
+
+.apply-intro h1{
+  color:#5f6754;
+}
+
+.apply-intro p{
+  color:#3f3f3f;
+}
+
+.apply-intro .signature{
+  color:#5f6754;
+  font-weight:700;
+}
+
+.apply-intro h1{
+  margin-bottom:20px;
+  font-size:36px;
+}
+
+.apply-intro p{
+  margin-bottom:16px;
+  line-height:1.6;
+}
+
+.signature{
+  margin-top:20px;
+  font-weight:600;
+}
+
+/* FORM */
+
+.modern-form{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* Floating Inputs */
+
+/* ===== FIXED FLOATING LABELS ===== */
+
+.field-group{
+  position:relative;
+}
+
+.field-group input,
+.field-group textarea{
+  width:100%;
+  padding:20px 14px 12px 14px; /* extra top space */
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.2);
+  background:rgba(255,255,255,.9);
+  font-size:15px;
+  outline:none;
+  transition:.3s;
+}
+
+.field-group textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.field-group label{
+  position:absolute;
+  left:14px;
+  top:18px;
+  font-size:14px;
+  color:#666;
+  transition:.3s ease;
+  pointer-events:none;
+}
+
+/* Move label up when input has content OR focus */
+.field-group input:focus + label,
+.field-group textarea:focus + label,
+.field-group input:not(:focus):valid + label,
+.field-group textarea:not(:focus):valid + label{
+  top:4px;
+  font-size:12px;
+  color:#5f6754;
+}
+
+/* CHECKBOX SECTION */
+
+.checkbox-section{
+  background:rgba(255,255,255,.75);
+  padding:25px;
+  border-radius:16px;
+}
+
+.checkbox-title{
+  color:#5f6754;      /* your accent green */
+  font-weight:800;
+  font-size:18px;
+  letter-spacing:.3px;
+}
+
+.checkbox-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+  cursor:pointer;
+}
+
+.checkbox-item input{
+  width:18px;
+  height:18px;
+  accent-color:#5f6754;
+}
+
+/* SUBMIT */
+
+.submit-wrap{
+  text-align:center;
+  margin-top:20px;
+}
+
+.submit-wrap button{
+  padding:14px 28px;
+  border:none;
+  border-radius:999px;
+  background:#5f6754;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.submit-wrap button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+  .apply-intro{
+    padding:25px;
+  }
+}
+
 /* ===== JOIN SECTION WITH BLURRED IMAGE ===== */
 
 #apply{
@@ -189,10 +353,14 @@ section{
   border:1px solid rgba(0,0,0,.2);
   color:#1b1b1b;
 }
-
 #apply button{
   background:#5f6754;
   color:white;
+  padding:10px 20px;      /* smaller button */
+  font-size:14px;         /* smaller text */
+  border-radius:999px;
+  width:auto;             /* prevents full width */
+  display:inline-block;   /* shrink to content */
 }
 
 #apply button:hover{
@@ -997,7 +1165,7 @@ footer{
             <span class="badge">Tradition</span>
           </div>
           <p class="card-desc">Celebrating gratitude for mentors and professors who guided us on our educational journey.</p>
-          <div class="card-cta">View photos →</div>
+          <div class="card-cta">View photos </div>
         </div>
 
         <div class="card activity-card" onclick="openActivity('midAutumn')" role="button" tabindex="0">
@@ -1006,7 +1174,7 @@ footer{
             <span class="badge">Lantern</span>
           </div>
           <p class="card-desc">Lantern lights, mooncakes, and community gathering.</p>
-          <div class="card-cta">View photos →</div>
+          <div class="card-cta">View photos </div>
         </div>
 
         <div class="card activity-card" onclick="openActivity('internationalFair')" role="button" tabindex="0">
@@ -1015,7 +1183,7 @@ footer{
             <span class="badge">Culture</span>
           </div>
           <p class="card-desc">Serving Bún Thịt Nướng and showcasing Vietnamese culture.</p>
-          <div class="card-cta">View photos →</div>
+          <div class="card-cta">View photos </div>
         </div>
 
         <div class="card activity-card" onclick="openActivity('gathering')" role="button" tabindex="0">
@@ -1024,7 +1192,7 @@ footer{
             <span class="badge">Community</span>
           </div>
           <p class="card-desc">Welcoming new Vietnamese students to Knox.</p>
-          <div class="card-cta">View photos →</div>
+          <div class="card-cta">View photos </div>
         </div>
 
         <div class="card activity-card" onclick="openActivity('newYear')" role="button" tabindex="0">
@@ -1033,7 +1201,7 @@ footer{
             <span class="badge">Celebration</span>
           </div>
           <p class="card-desc">Traditional games and festive celebration.</p>
-          <div class="card-cta">View photos →</div>
+          <div class="card-cta">View photos </div>
         </div>
 
         <div class="card activity-card" onclick="openActivity('trivia')" role="button" tabindex="0">
@@ -1042,7 +1210,7 @@ footer{
             <span class="badge">Fun</span>
           </div>
           <p class="card-desc">Competitive trivia night with food and prizes.</p>
-          <div class="card-cta">View photos →</div>
+          <div class="card-cta">View photos </div>
         </div>
 
         <div class="card activity-card" onclick="openActivity('calligraphy')" role="button" tabindex="0">
@@ -1051,7 +1219,7 @@ footer{
             <span class="badge">Art</span>
           </div>
           <p class="card-desc">Exploring Vietnamese calligraphy and cultural art.</p>
-          <div class="card-cta">View photos →</div>
+          <div class="card-cta">View photos </div>
         </div>
 
       </div>
@@ -1074,7 +1242,7 @@ footer{
           </div>
           <h3>A Tiny Vietnam Adventure</h3>
           <p>An interactive cultural experience introducing Vietnam through animation and storytelling.</p>
-          <a href="https://kacytran1122.github.io/IFAIR-2026-WITH-VIETNAMESE-SAMSUNG-VERSION-/" target="_blank" class="project-btn">Explore</a>
+          <a href="https://vietnam.vsaknox.com/" target="_blank" class="project-btn">Explore</a>
         </div>
 
         <div class="project-card">
@@ -1214,11 +1382,11 @@ footer{
 
     <div class="ready-right">
       <a href="https://docs.google.com/document/d/17NPL_bi0nmIYlkuiEzGMBbd1d02RC8oHATKJbngQ6qA/edit?tab=t.0" target="_blank" class="jd-btn">
-        Vietnamese Club JD Booklet 2026–2027 →
+        JD Booklet 2026–2027 
       </a>
 
       <a href="#apply" class="apply-btn-cta">
-        Apply Now →
+        Apply Now 
       </a>
     </div>
 
@@ -1226,40 +1394,112 @@ footer{
 </section>
 
 <!-- APPLY -->
-<section id="apply">
-<h1>Join Vietnamese Club</h1>
+<section id="apply" class="apply-section">
 
-<div class="form-card">
-<form id="appForm">
+  <div class="apply-wrapper">
 
-<div class="field">
-<input type="text" name="name" placeholder="Full Name" required>
-</div>
+    <!-- Announcement -->
+    <div class="apply-intro">
+      <h1>Executive Board Applications 2026–2027</h1>
 
-<div class="field">
-<input type="email" name="email" placeholder="Knox Email" required>
-</div>
+      <p>
+        Our executive board applications for the upcoming academic year (2026–2027) are now officially open.
+        This is a great opportunity to deepen your involvement in Vietnamese culture and help create meaningful,
+        engaging experiences for our campus community.
+      </p>
 
-<div class="field">
-<select name="year" required>
-<option value="">Select Year</option>
-<option>Freshman</option>
-<option>Sophomore</option>
-<option>Junior</option>
-<option>Senior</option>
-</select>
-</div>
+      <p>
+        We are currently recruiting for the following positions:
+        <strong>Secretary, Co-Outreach Coordinator, Co-Public Relations Coordinator, and Treasurer.</strong>
+      </p>
 
-<div class="field">
-<textarea name="reason" rows="4" placeholder="Why do you want to join?" required></textarea>
-</div>
+      <p>
+        Please review the Job Description carefully before applying.
+        All applications will be carefully reviewed and selected candidates will be contacted with next steps.
+      </p>
 
-<button type="submit">Submit Application</button>
+      <p class="signature">
+        With love and gratitude,<br>
+        Vietnamese Club
+      </p>
+    </div>
 
-</form>
-</div>
+    <!-- Form -->
+    <form class="modern-form">
+
+      <div class="field-group">
+        <input type="email" required>
+        <label>What is your Knox email?</label>
+      </div>
+
+      <div class="field-group">
+        <input type="text" required>
+        <label>What is your name?</label>
+      </div>
+
+      <div class="field-group">
+        <input type="text" required>
+        <label>What is your class year? (e.g., Class of 2027)</label>
+      </div>
+
+      <div class="field-group textarea-group">
+        <textarea required></textarea>
+        <label>What motivates you to apply for a position on our Executive Board?</label>
+      </div>
+
+      <div class="field-group textarea-group">
+        <textarea required></textarea>
+        <label>Which previous events have you attended or heard about? What stood out to you?</label>
+      </div>
+
+      <!-- Positions -->
+      <div class="checkbox-section">
+        <p class="checkbox-title">What position(s) are you interested in?</p>
+
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <span>Co-Outreach Coordinator</span>
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <span>Co-Public Relations</span>
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <span>Treasurer</span>
+        </label>
+
+        <label class="checkbox-item">
+          <input type="checkbox">
+          <span>Secretary</span>
+        </label>
+      </div>
+
+      <div class="field-group textarea-group">
+        <textarea required></textarea>
+        <label>What skills, experiences, or qualities make you a strong candidate?</label>
+      </div>
+
+      <div class="field-group">
+        <input type="text" required>
+        <label>Preferred means of communication (Instagram, WhatsApp, etc.)</label>
+      </div>
+
+      <div class="field-group">
+        <input type="text" required>
+        <label>Anything else you'd like to share?</label>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit">Submit Application </button>
+      </div>
+
+    </form>
+
+  </div>
 </section>
-
 <footer>
 © 2026 Vietnamese Club
 </footer>
