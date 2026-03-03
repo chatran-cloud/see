@@ -143,18 +143,66 @@ section{
   padding:120px 8%;
   background:var(--section);
 }
-/* ===== BEAUTIFUL MERGED SECTION ===== */
 
+/* ===== JOIN SECTION WITH BLURRED IMAGE ===== */
+
+#apply{
+  position:relative;
+  padding:120px 8%;
+  background:#CBB69E;
+  overflow:hidden;
+  color:#1b1b1b;
+}
+
+/* Background image layer */
+#apply::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    url("background.jpg") center/cover no-repeat;
+  filter:blur(6px);
+  transform:scale(1.1); /* prevents blur edge cropping */
+  z-index:0;
+}
+
+/* Warm overlay tint */
+#apply::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(203,182,158,.75); /* matches #CBB69E */
+  z-index:1;
+}
+
+/* Keep content above blur */
+#apply > *{
+  position:relative;
+  z-index:2;
+}
+
+/* Improve form contrast */
+#apply input,
+#apply select,
+#apply textarea{
+  background:rgba(255,255,255,.9);
+  border:1px solid rgba(0,0,0,.2);
+  color:#1b1b1b;
+}
+
+#apply button{
+  background:#5f6754;
+  color:white;
+}
+
+#apply button:hover{
+  background:#4b5143;
+}
 .merged-section{
   padding:110px 8%;
-  background:
-    radial-gradient(900px 500px at 15% 15%, rgba(230,214,204,.16), transparent 60%),
-    radial-gradient(700px 420px at 85% 30%, rgba(95,103,84,.20), transparent 55%),
-    linear-gradient(180deg, #1b201e 0%, #141816 100%);
-  border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  position:relative;
-  overflow:hidden;
+  background:#808080;
+  border-top:1px solid rgba(255,255,255,.18);
+  border-bottom:1px solid rgba(255,255,255,.18);
 }
 
 .merged-header{
@@ -189,8 +237,8 @@ section{
 }
 
 .split-col{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.28);
   border-radius:18px;
   padding:18px;
   backdrop-filter: blur(6px);
@@ -523,6 +571,211 @@ button:hover{
   background:#4b5143;
 }
 
+/* ===== POSITIONS SECTION ===== */
+
+.positions-section{
+  background:var(--section);
+  padding:120px 8%;
+}
+
+.positions-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.positions-header h1{
+  font-size:48px;
+  margin-bottom:14px;
+}
+
+.positions-header p{
+  color:var(--muted);
+  max-width:700px;
+  margin:auto;
+}
+
+.positions-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;
+}
+
+
+.position-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;
+  padding:30px;
+  transition:.4s;
+  backdrop-filter:blur(6px);
+  position:relative;
+  overflow:hidden;
+}
+
+.position-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+  border-color:rgba(255,255,255,.15);
+}
+
+.position-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.position-top h2{
+  font-size:24px;
+}
+
+
+/* ===== HORIZONTAL READY BOX ===== */
+
+.ready-horizontal{
+  margin-top:80px;
+  padding:50px 60px;
+  border-radius:24px;
+  border:2px dashed rgba(255,255,255,.2);
+  background:linear-gradient(
+      135deg,
+      rgba(95,103,84,.15),
+      rgba(0,0,0,.4)
+  );
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+  transition:.4s;
+}
+
+.ready-horizontal:hover{
+  border-color:rgba(255,255,255,.35);
+  transform:translateY(-6px);
+}
+
+.ready-left h2{
+  font-size:42px;
+  margin-bottom:16px;
+}
+
+.ready-left p{
+  color:var(--muted);
+  max-width:500px;
+  font-size:17px;
+}
+
+.ready-right{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  align-items:flex-start;
+}
+
+/* Big JD button */
+
+.jd-btn{
+  padding:18px 34px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:16px;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(135deg,#f7971e,#ff512f,#9b5de5);
+  transition:.35s;
+  white-space:nowrap;
+}
+
+.jd-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 25px 60px rgba(0,0,0,.6);
+}
+
+/* Apply button */
+
+.apply-btn-cta{
+  padding:14px 26px;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(135deg,#5f6754,#3e4436);
+  transition:.3s;
+}
+
+.apply-btn-cta:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+/* Responsive */
+
+@media (max-width:900px){
+  .ready-horizontal{
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+  }
+
+  .ready-right{
+    align-items:center;
+  }
+
+  .ready-left p{
+    max-width:100%;
+  }
+}
+.opening-badge{
+  background:var(--accent);
+  color:white;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.view-btn{
+  width:100%;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  margin-bottom:20px;
+  background:linear-gradient(135deg,#5f6754,#3e4436);
+  color:white;
+  transition:.3s;
+}
+
+.view-btn:hover{
+  opacity:.85;
+}
+
+.position-details{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .5s ease;
+}
+
+.position-card.active .position-details{
+  max-height:500px;
+}
+
+.position-details h3{
+  margin:16px 0 8px;
+  font-size:18px;
+}
+
+.position-details ul{
+  padding-left:20px;
+  color:var(--muted);
+}
+
+.position-details li{
+  margin-bottom:8px;
+}
+
 /* MODAL */
 
 /* ===== PHOTO MODAL (GALLERY STYLE) ===== */
@@ -726,6 +979,7 @@ footer{
   <div class="split-wrap">
 
     <!-- LEFT: ACTIVITIES -->
+    <!-- LEFT: ACTIVITIES -->
     <div class="split-col">
       <div class="split-head">
         <div>
@@ -736,32 +990,70 @@ footer{
       </div>
 
       <div class="grid">
+
         <div class="card activity-card" onclick="openActivity('teacher')" role="button" tabindex="0">
           <div class="activity-top">
             <p class="card-title">Vietnamese Teacher's Day</p>
             <span class="badge">Tradition</span>
           </div>
-          <p class="card-desc">Flowers, letters, and gratitude for the mentors who shaped us.</p>
+          <p class="card-desc">Celebrating gratitude for mentors and professors who guided us on our educational journey.</p>
           <div class="card-cta">View photos →</div>
         </div>
 
-        <div class="card activity-card" onclick="openActivity('pho')" role="button" tabindex="0">
+        <div class="card activity-card" onclick="openActivity('midAutumn')" role="button" tabindex="0">
           <div class="activity-top">
             <p class="card-title">Mid Autumn Festival x ASA</p>
-            <span class="badge">Night Market</span>
+            <span class="badge">Lantern</span>
           </div>
-          <p class="card-desc">Lanterns, mooncakes, and a warm cross cultural celebration.</p>
+          <p class="card-desc">Lantern lights, mooncakes, and community gathering.</p>
           <div class="card-cta">View photos →</div>
         </div>
 
-        <div class="card activity-card" onclick="openActivity('language')" role="button" tabindex="0">
+        <div class="card activity-card" onclick="openActivity('internationalFair')" role="button" tabindex="0">
           <div class="activity-top">
-            <p class="card-title">International Fair</p>
-            <span class="badge">Campus</span>
+            <p class="card-title">International Fair x ICLUB</p>
+            <span class="badge">Culture</span>
           </div>
-          <p class="card-desc">Food, dance, and a booth that turns curiosity into connection.</p>
+          <p class="card-desc">Serving Bún Thịt Nướng and showcasing Vietnamese culture.</p>
           <div class="card-cta">View photos →</div>
         </div>
+
+        <div class="card activity-card" onclick="openActivity('gathering')" role="button" tabindex="0">
+          <div class="activity-top">
+            <p class="card-title">Vietnamese First Gathering 2025</p>
+            <span class="badge">Community</span>
+          </div>
+          <p class="card-desc">Welcoming new Vietnamese students to Knox.</p>
+          <div class="card-cta">View photos →</div>
+        </div>
+
+        <div class="card activity-card" onclick="openActivity('newYear')" role="button" tabindex="0">
+          <div class="activity-top">
+            <p class="card-title">New Year Event x ASA</p>
+            <span class="badge">Celebration</span>
+          </div>
+          <p class="card-desc">Traditional games and festive celebration.</p>
+          <div class="card-cta">View photos →</div>
+        </div>
+
+        <div class="card activity-card" onclick="openActivity('trivia')" role="button" tabindex="0">
+          <div class="activity-top">
+            <p class="card-title">Brain Busters Trivia Night</p>
+            <span class="badge">Fun</span>
+          </div>
+          <p class="card-desc">Competitive trivia night with food and prizes.</p>
+          <div class="card-cta">View photos →</div>
+        </div>
+
+        <div class="card activity-card" onclick="openActivity('calligraphy')" role="button" tabindex="0">
+          <div class="activity-top">
+            <p class="card-title">Calligraphy Night x ASA</p>
+            <span class="badge">Art</span>
+          </div>
+          <p class="card-desc">Exploring Vietnamese calligraphy and cultural art.</p>
+          <div class="card-cta">View photos →</div>
+        </div>
+
       </div>
     </div>
 
@@ -778,7 +1070,7 @@ footer{
       <div class="grid">
         <div class="project-card">
           <div class="project-thumb">
-            <img src="g5.png" alt="A Tiny Vietnam Adventure preview">
+            <img src="gold.png" alt="A Tiny Vietnam Adventure preview">
           </div>
           <h3>A Tiny Vietnam Adventure</h3>
           <p>An interactive cultural experience introducing Vietnam through animation and storytelling.</p>
@@ -787,11 +1079,11 @@ footer{
 
         <div class="project-card">
           <div class="project-thumb">
-            <img src="g5.png" alt="Vietnamese Club Website preview">
+            <img src="web.png" alt="Vietnamese Club Website preview">
           </div>
           <h3>Vietnamese Club Website</h3>
           <p>A custom website documenting events and executive recruitment.</p>
-          <a href="https://kacytran1122.github.io/VIETNAMESE-CLUB-WEBSITE/" target="_blank" class="project-btn">Explore</a>
+          <a href="https://apply.vsaknox.com/" target="_blank" class="project-btn">Explore</a>
         </div>
       </div>
     </div>
@@ -800,15 +1092,137 @@ footer{
 </section>
 
 <!-- POSITIONS -->
-<section id="positions">
-<h1>Executive Positions 2026–2027</h1>
+<section id="positions" class="positions-section">
 
-<div class="grid">
-<div class="card">Secretary</div>
-<div class="card">Treasurer</div>
-<div class="card">Outreach Coordinator</div>
-<div class="card">Public Relations</div>
-</div>
+  <div class="positions-header">
+    <h1>Opening Executive Positions</h1>
+    <p>Explore available roles that will shape our Vietnamese Club community in 2026–2027.</p>
+  </div>
+
+  <div class="positions-grid">
+
+    <!-- Secretary -->
+    <div class="position-card" data-role="secretary">
+      <div class="position-top">
+        <h2>Secretary</h2>
+        <span class="opening-badge">1 Opening</span>
+      </div>
+      <button class="view-btn">View Responsibilities</button>
+
+      <div class="position-details">
+        <h3>Responsibilities</h3>
+        <ul>
+          <li>Document meeting notes</li>
+          <li>Maintain club records</li>
+          <li>Coordinate internal communication</li>
+        </ul>
+
+        <h3>Skills</h3>
+        <ul>
+          <li>Organization</li>
+          <li>Attention to detail</li>
+          <li>Clear writing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Treasurer -->
+    <div class="position-card" data-role="treasurer">
+      <div class="position-top">
+        <h2>Treasurer</h2>
+        <span class="opening-badge">2 Openings</span>
+      </div>
+      <button class="view-btn">View Responsibilities</button>
+
+      <div class="position-details">
+        <h3>Responsibilities</h3>
+        <ul>
+          <li>Manage club budget</li>
+          <li>Track expenses</li>
+          <li>Submit financial reports</li>
+        </ul>
+
+        <h3>Skills</h3>
+        <ul>
+          <li>Financial responsibility</li>
+          <li>Accuracy</li>
+          <li>Transparency</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Outreach -->
+    <div class="position-card" data-role="outreach">
+      <div class="position-top">
+        <h2>Outreach Coordinator</h2>
+        <span class="opening-badge">1 Opening</span>
+      </div>
+      <button class="view-btn">View Responsibilities</button>
+
+      <div class="position-details">
+        <h3>Responsibilities</h3>
+        <ul>
+          <li>Run bi-weekly general meetings</li>
+          <li>Represent club in Student Senate</li>
+          <li>Collect feedback and improve events</li>
+          <li>Coordinate with other organizations</li>
+        </ul>
+
+        <h3>Skills</h3>
+        <ul>
+          <li>Communication confidence</li>
+          <li>Community mindset</li>
+          <li>Team collaboration</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Public Relations -->
+    <div class="position-card" data-role="pr">
+      <div class="position-top">
+        <h2>Public Relations</h2>
+        <span class="opening-badge">2 Openings</span>
+      </div>
+      <button class="view-btn">View Responsibilities</button>
+
+      <div class="position-details">
+        <h3>Responsibilities</h3>
+        <ul>
+          <li>Design promotional materials</li>
+          <li>Manage social media</li>
+          <li>Promote club events</li>
+        </ul>
+
+        <h3>Skills</h3>
+        <ul>
+          <li>Creativity</li>
+          <li>Visual communication</li>
+          <li>Consistency</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="ready-horizontal">
+
+    <div class="ready-left">
+      <h2>Ready to Join?</h2>
+      <p>
+        Let’s make your mark on our community. Please review the full role description booklet before applying.
+      </p>
+    </div>
+
+    <div class="ready-right">
+      <a href="https://docs.google.com/document/d/17NPL_bi0nmIYlkuiEzGMBbd1d02RC8oHATKJbngQ6qA/edit?tab=t.0" target="_blank" class="jd-btn">
+        Vietnamese Club JD Booklet 2026–2027 →
+      </a>
+
+      <a href="#apply" class="apply-btn-cta">
+        Apply Now →
+      </a>
+    </div>
+
+  </div>
 </section>
 
 <!-- APPLY -->
@@ -851,22 +1265,50 @@ footer{
 </footer>
 
 <script>
-const activityData={
-teacher:{
-title:"Vietnamese Teacher's Day",
-imgs:["i.png","i4.png","i3.png"],
-text:"Students return with flowers and letters to thank their mentors."
-},
-pho:{
-title:"Mid Autumn Festival",
-imgs:["e6.png","e2.png"],
-text:"Lantern lights, mooncakes, and cultural sharing."
-},
-language:{
-title:"International Fair",
-imgs:["f10.png"],
-text:"Food, dance, and cultural booth showcase."
-}
+const activityData = {
+
+  teacher:{
+    title:"Vietnamese Teacher's Day",
+    imgs:["i.png","i4.png","i3.png"],
+    text:"Celebrating gratitude for mentors."
+  },
+
+  midAutumn:{
+    title:"Mid Autumn Festival x ASA",
+    imgs:["e6.png","e2.png","e3.png","e4.png","e5.png","e1.png"],
+    text:"Lantern lights and mooncakes."
+  },
+
+  internationalFair:{
+    title:"International Fair x ICLUB",
+    imgs:["f10.png","f2.png","f9.png","f7.png","iclub.jpg","f5.png","f1.png","f6.png","f3.png"],
+    text:"Food, dance, and cultural showcase."
+  },
+
+  gathering:{
+    title:"Vietnamese First Gathering 2025",
+    imgs:["g1.png", "g2.png","g5.png"],
+    text:"Welcoming new Vietnamese students."
+  },
+
+  newYear:{
+    title:"New Year Event x ASA",
+    imgs:["n1.png","n2.png","n3.png","n4.png","n5.png","n6.png"],
+    text:"Festive New Year celebration."
+  },
+
+  trivia:{
+    title:"Brain Busters Trivia Night",
+    imgs:["trivia.png", "food.png", "prize.png", "an.png", "part.png", "winner.png"],
+    text:"Trivia competition night."
+  },
+
+  calligraphy:{
+    title:"Calligraphy Night x ASA",
+    imgs:["tbd.png"],
+    text:"Exploring traditional calligraphy."
+  }
+
 };
 function openActivity(id){
   const a = activityData[id];
@@ -1009,6 +1451,17 @@ document.addEventListener("keydown", (e)=>{
     e.preventDefault();
     el.click();
   }
+});
+document.querySelectorAll(".view-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const card = btn.closest(".position-card");
+
+    document.querySelectorAll(".position-card").forEach(c=>{
+      if(c !== card) c.classList.remove("active");
+    });
+
+    card.classList.toggle("active");
+  });
 });
 </script>
 
