@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vietnamese Club Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+html{scroll-behavior:smooth;}
+
+:root{
+  --bg:#0f1412;
+  --section:#151a18;
+  --card:#e6d6cc;
+  --text:#f2f2f2;
+  --muted:#c9c9c9;
+  --accent:#5f6754;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:'Be Vietnam Pro', sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(15,20,18,.95);
+  padding:18px 0;
+  z-index:100;
+}
+
+.nav-links{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--text);
+  font-size:15px;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  opacity:.6;
+}
+
+
+
+/* HERO */
+
+#home{
+  min-height:100vh;
+
+  /* override the generic section background */
+  background-color:transparent !important;
+  background-image:
+    linear-gradient(rgba(10,12,11,.55), rgba(10,12,11,.55)),
+    url('g5.png');
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+
+  display:flex;
+  align-items:center;
+  padding:140px 8%;
+  position:relative;
+}
+
+/* keep content above the background */
+.home-panel{
+  max-width:650px;
+  position:relative;
+  z-index:1;
+}
+
+#home h1{
+  font-size:68px;
+  line-height:1.05;
+  margin-bottom:22px;
+}
+
+.slogan{
+  font-size:20px;
+  color:#dcdcdc;
+  margin-bottom:26px;
+}
+
+#home p{
+  color:#cfcfcf;
+  margin-bottom:18px;
+}
+
+/* Get Started button */
+.cta-row{
+  display:flex;
+  gap:14px;
+  margin-top:22px;
+  flex-wrap:wrap;
+}
+
+.get-started{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 22px;
+  border-radius:999px;
+  background:#ffffff;
+  color:#0f1412;
+  text-decoration:none;
+  font-weight:700;
+  transition:.25s;
+}
+
+.get-started:hover{
+  transform:translateY(-2px);
+  opacity:.92;
+}
+
+.get-started.secondary{
+  background:transparent;
+  color:#ffffff;
+  border:1px solid rgba(255,255,255,.5);
+}
+/* SECTIONS */
+
+section{
+  padding:120px 8%;
+  background:var(--section);
+}
+/* ===== BEAUTIFUL MERGED SECTION ===== */
+
+.merged-section{
+  padding:110px 8%;
+  background:
+    radial-gradient(900px 500px at 15% 15%, rgba(230,214,204,.16), transparent 60%),
+    radial-gradient(700px 420px at 85% 30%, rgba(95,103,84,.20), transparent 55%),
+    linear-gradient(180deg, #1b201e 0%, #141816 100%);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  position:relative;
+  overflow:hidden;
+}
+
+.merged-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-bottom:26px;
+}
+
+.merged-title{
+  margin:0;
+  font-size:44px;
+  letter-spacing:.2px;
+}
+
+.merged-sub{
+  margin-top:10px;
+  max-width:720px;
+  color:rgba(242,242,242,.75);
+}
+
+/* ===== HORIZONTAL (SIDE-BY-SIDE) MERGED LAYOUT ===== */
+
+.split-wrap{
+  display:grid;
+  grid-template-columns: 1fr 1fr; /* two columns */
+  gap:26px;
+  align-items:start;
+  margin-top:22px;
+}
+
+.split-col{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:18px;
+  backdrop-filter: blur(6px);
+}
+
+.split-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:14px;
+}
+
+.split-head h2{
+  margin:0;
+  font-size:22px;
+  letter-spacing:.2px;
+}
+
+.split-head p{
+  margin:6px 0 0;
+  max-width:none;
+  color:rgba(242,242,242,.72);
+}
+
+.split-tag{
+  font-size:12px;
+  font-weight:800;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(230,214,204,.92);
+  color:#141816;
+  white-space:nowrap;
+}
+
+/* make the inside grids feel tighter */
+.split-col .grid{
+  gap:16px;
+}
+
+/* small screens: stack */
+@media (max-width: 980px){
+  .split-wrap{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* OPTIONAL: remove your old tabs visually if they remain */
+.switcher{ display:none; }
+
+.quick-stats{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.stat-pill{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(255,255,255,.82);
+  padding:10px 12px;
+  border-radius:999px;
+  font-size:13px;
+  backdrop-filter: blur(6px);
+}
+
+.stat-pill b{
+  color:#fff;
+  font-weight:700;
+}
+
+.switcher{
+  margin-top:18px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.tab{
+  border:none;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:700;
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.12);
+  transition:.25s;
+}
+
+.tab:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.10);
+}
+
+.tab.active{
+  background:rgba(230,214,204,.95);
+  color:#141816;
+  border-color:rgba(230,214,204,.95);
+}
+
+.merged-panels{
+  margin-top:22px;
+}
+
+.panel{
+  display:none;
+  animation: fadeUp .35s ease both;
+}
+
+.panel.active{
+  display:block;
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform: translateY(10px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+/* prettier card base for this section */
+.merged-section .card,
+.merged-section .project-card{
+  background:rgba(255,255,255,.92);
+  border-radius:16px;
+  padding:22px;
+  border:1px solid rgba(0,0,0,.06);
+  transition:.28s;
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle sheen */
+.merged-section .card::before,
+.merged-section .project-card::before{
+  content:"";
+  position:absolute;
+  inset:-40% -40% auto auto;
+  width:220px;
+  height:220px;
+  background:radial-gradient(circle, rgba(95,103,84,.35), transparent 60%);
+  transform:translate(30px, -30px);
+  opacity:.25;
+  pointer-events:none;
+}
+
+.merged-section .card:hover,
+.merged-section .project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 22px 55px rgba(0,0,0,.35);
+}
+
+/* activity cards: add a “click to view” hint */
+.activity-card{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.activity-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.badge{
+  font-size:12px;
+  font-weight:700;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(95,103,84,.12);
+  color:#2d332b;
+}
+
+.card-title{
+  font-size:18px;
+  font-weight:700;
+  margin:0;
+}
+
+.card-desc{
+  margin:0;
+  color:#3d3d3d;
+  line-height:1.45;
+}
+
+.card-cta{
+  margin-top:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  color:#2d332b;
+  opacity:.85;
+}
+
+/* project cards: thumbnail */
+.project-thumb{
+  width:100%;
+  height:150px;
+  border-radius:14px;
+  background:linear-gradient(135deg, rgba(95,103,84,.35), rgba(0,0,0,.08));
+  margin-bottom:14px;
+  overflow:hidden;
+}
+
+.project-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  opacity:.95;
+  transform:scale(1.03);
+  transition:.35s;
+}
+
+.project-card:hover .project-thumb img{
+  transform:scale(1.08);
+}
+
+/* nicer project button */
+.project-btn{
+  border-radius:999px;
+  font-weight:800;
+  padding:11px 18px;
+}
+
+/* optional: keep your global grid but give this section slightly denser spacing */
+.merged-section .grid{
+  gap:18px;
+}
+
+h1{
+  font-size:40px;
+  margin-bottom:30px;
+}
+
+h2{
+  margin-top:30px;
+  margin-bottom:10px;
+}
+
+p{
+  max-width:800px;
+  color:var(--muted);
+  margin-bottom:15px;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+}
+
+/* CARDS */
+
+.card{
+  background:var(--card);
+  color:#1b1b1b;
+  padding:25px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+/* PROJECT CARD */
+
+.project-card{
+  background:var(--card);
+  color:#1b1b1b;
+  padding:25px;
+  border-radius:6px;
+}
+
+.project-card img{
+  width:100%;
+  margin-bottom:20px;
+}
+
+.project-btn{
+  display:inline-block;
+  margin-top:15px;
+  background:var(--accent);
+  color:white;
+  padding:12px 24px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.project-btn:hover{
+  background:#4b5143;
+}
+
+/* FORM */
+
+.form-card{
+  max-width:700px;
+  margin:auto;
+}
+
+.field{
+  margin-bottom:20px;
+}
+
+input, select, textarea{
+  width:100%;
+  padding:12px;
+  background:#222;
+  border:1px solid #333;
+  color:white;
+}
+
+button{
+  background:var(--accent);
+  color:white;
+  padding:12px 24px;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:#4b5143;
+}
+
+/* MODAL */
+
+/* ===== PHOTO MODAL (GALLERY STYLE) ===== */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:28px 18px;
+  z-index:9999;
+}
+
+.modal.show{ display:flex; }
+
+.photo-modal{
+  width:min(1180px, 96vw);
+  background:#ffffff;
+  color:#111;
+  border-radius:18px;
+  box-shadow:0 30px 90px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+
+.photo-modal-header{
+  position:relative;
+  padding:28px 26px 10px;
+  text-align:center;
+}
+
+.photo-modal-title{
+  margin:0;
+  font-size:46px;
+  letter-spacing:.2px;
+  font-weight:800;
+  color:#1b1b1b;
+}
+
+.photo-modal-close{
+  position:absolute;
+  top:16px;
+  right:18px;
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border:none;
+  background:transparent;
+  font-size:30px;
+  cursor:pointer;
+  color:#111;
+  opacity:.75;
+  transition:.2s;
+}
+.photo-modal-close:hover{ opacity:1; transform:scale(1.05); }
+
+.photo-modal-body{
+  padding:10px 26px 28px;
+}
+
+/* Slider track */
+.gallery{
+  position:relative;
+}
+
+.gallery-track{
+  display:flex;
+  gap:22px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:18px 8px 26px;
+  scrollbar-width:none; /* Firefox */
+}
+.gallery-track::-webkit-scrollbar{ display:none; }
+
+.slide{
+  scroll-snap-align:center;
+  flex:0 0 min(520px, 82vw);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 45px rgba(0,0,0,.22);
+  background:#f6f6f6;
+}
+
+.slide img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  display:block;
+}
+
+/* Arrows */
+.gallery-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s;
+}
+.gallery-arrow:hover{ background:rgba(0,0,0,.72); transform:translateY(-50%) scale(1.05); }
+
+.gallery-arrow.left{ left:6px; }
+.gallery-arrow.right{ right:6px; }
+
+/* Dots */
+.gallery-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  padding-bottom:6px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  background:rgba(0,0,0,.18);
+  transition:.2s;
+}
+.dot.active{ background:rgba(0,0,0,.55); }
+
+/* Responsive title */
+@media (max-width:700px){
+  .photo-modal-title{ font-size:32px; }
+  .slide img{ height:240px; }
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:40px;
+  font-size:13px;
+  color:#777;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#explore">Activities</a>
+    <a href="#positions">Positions</a>
+    <a href="#apply">Join</a>
+  </div>
+</nav>
+
+
+<section id="home">
+  <div class="home-panel">
+    <h1>Vietnamese Student Association</h1>
+    <p class="slogan">Sharing heritage, building community, and celebrating culture together.</p>
+
+    <h2>Mission</h2>
+    <p>Vietnamese Club introduces Vietnamese culture and traditions to the Knox community while creating a welcoming environment for shared experiences and conversations.</p>
+
+    <h2>Our Goal</h2>
+    <p>We organize cultural events, cooking activities, and campus programs to build lasting cultural awareness and appreciation.</p>
+
+    <div class="cta-row">
+      <a class="get-started" href="#explore">Get Started</a>
+      <a class="get-started secondary" href="#apply">Join Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES + PROJECTS -->
+<!-- ACTIVITIES + PROJECTS (REDESIGNED) -->
+<section id="explore" class="merged-section">
+
+  <div class="merged-header">
+    <div>
+      <h1 class="merged-title">Activities and Projects</h1>
+      <p class="merged-sub">Explore our events and the interactive sites built for the Knox community.</p>
+    </div>
+
+    <div class="quick-stats">
+      <div class="stat-pill"><b>3</b> featured activities</div>
+      <div class="stat-pill"><b>2</b> live projects</div>
+      <div class="stat-pill">Tap cards to open</div>
+    </div>
+  </div>
+
+  <!-- SIDE-BY-SIDE COLUMNS -->
+  <div class="split-wrap">
+
+    <!-- LEFT: ACTIVITIES -->
+    <div class="split-col">
+      <div class="split-head">
+        <div>
+          <h2>Activities</h2>
+          <p>Click to open the photo gallery.</p>
+        </div>
+        <span class="split-tag">Events</span>
+      </div>
+
+      <div class="grid">
+        <div class="card activity-card" onclick="openActivity('teacher')" role="button" tabindex="0">
+          <div class="activity-top">
+            <p class="card-title">Vietnamese Teacher's Day</p>
+            <span class="badge">Tradition</span>
+          </div>
+          <p class="card-desc">Flowers, letters, and gratitude for the mentors who shaped us.</p>
+          <div class="card-cta">View photos →</div>
+        </div>
+
+        <div class="card activity-card" onclick="openActivity('pho')" role="button" tabindex="0">
+          <div class="activity-top">
+            <p class="card-title">Mid Autumn Festival x ASA</p>
+            <span class="badge">Night Market</span>
+          </div>
+          <p class="card-desc">Lanterns, mooncakes, and a warm cross cultural celebration.</p>
+          <div class="card-cta">View photos →</div>
+        </div>
+
+        <div class="card activity-card" onclick="openActivity('language')" role="button" tabindex="0">
+          <div class="activity-top">
+            <p class="card-title">International Fair</p>
+            <span class="badge">Campus</span>
+          </div>
+          <p class="card-desc">Food, dance, and a booth that turns curiosity into connection.</p>
+          <div class="card-cta">View photos →</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PROJECTS -->
+    <div class="split-col">
+      <div class="split-head">
+        <div>
+          <h2>Projects</h2>
+          <p>Open the live links to explore.</p>
+        </div>
+        <span class="split-tag">Built by VSA</span>
+      </div>
+
+      <div class="grid">
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="g5.png" alt="A Tiny Vietnam Adventure preview">
+          </div>
+          <h3>A Tiny Vietnam Adventure</h3>
+          <p>An interactive cultural experience introducing Vietnam through animation and storytelling.</p>
+          <a href="https://kacytran1122.github.io/IFAIR-2026-WITH-VIETNAMESE-SAMSUNG-VERSION-/" target="_blank" class="project-btn">Explore</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <img src="g5.png" alt="Vietnamese Club Website preview">
+          </div>
+          <h3>Vietnamese Club Website</h3>
+          <p>A custom website documenting events and executive recruitment.</p>
+          <a href="https://kacytran1122.github.io/VIETNAMESE-CLUB-WEBSITE/" target="_blank" class="project-btn">Explore</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POSITIONS -->
+<section id="positions">
+<h1>Executive Positions 2026–2027</h1>
+
+<div class="grid">
+<div class="card">Secretary</div>
+<div class="card">Treasurer</div>
+<div class="card">Outreach Coordinator</div>
+<div class="card">Public Relations</div>
+</div>
+</section>
+
+<!-- APPLY -->
+<section id="apply">
+<h1>Join Vietnamese Club</h1>
+
+<div class="form-card">
+<form id="appForm">
+
+<div class="field">
+<input type="text" name="name" placeholder="Full Name" required>
+</div>
+
+<div class="field">
+<input type="email" name="email" placeholder="Knox Email" required>
+</div>
+
+<div class="field">
+<select name="year" required>
+<option value="">Select Year</option>
+<option>Freshman</option>
+<option>Sophomore</option>
+<option>Junior</option>
+<option>Senior</option>
+</select>
+</div>
+
+<div class="field">
+<textarea name="reason" rows="4" placeholder="Why do you want to join?" required></textarea>
+</div>
+
+<button type="submit">Submit Application</button>
+
+</form>
+</div>
+</section>
+
+<footer>
+© 2026 Vietnamese Club
+</footer>
+
+<script>
+const activityData={
+teacher:{
+title:"Vietnamese Teacher's Day",
+imgs:["i.png","i4.png","i3.png"],
+text:"Students return with flowers and letters to thank their mentors."
+},
+pho:{
+title:"Mid Autumn Festival",
+imgs:["e6.png","e2.png"],
+text:"Lantern lights, mooncakes, and cultural sharing."
+},
+language:{
+title:"International Fair",
+imgs:["f10.png"],
+text:"Food, dance, and cultural booth showcase."
+}
+};
+function openActivity(id){
+  const a = activityData[id];
+  if(!a) return;
+
+  // overlay
+  const overlay = document.createElement("div");
+  overlay.className = "modal show";
+  overlay.setAttribute("role","dialog");
+  overlay.setAttribute("aria-modal","true");
+
+  // build slides HTML
+  const slidesHTML = a.imgs.map((img, idx) => `
+    <div class="slide" data-index="${idx}">
+      <img src="${img}" alt="${a.title} photo ${idx+1}">
+    </div>
+  `).join("");
+
+  // dots HTML
+  const dotsHTML = a.imgs.map((_, idx) => `
+    <button class="dot ${idx===0 ? "active":""}" data-dot="${idx}" aria-label="Go to photo ${idx+1}"></button>
+  `).join("");
+
+  overlay.innerHTML = `
+    <div class="photo-modal">
+      <div class="photo-modal-header">
+        <h2 class="photo-modal-title">${a.title}</h2>
+        <button class="photo-modal-close" aria-label="Close">×</button>
+      </div>
+
+      <div class="photo-modal-body">
+        <div class="gallery">
+          <button class="gallery-arrow left" aria-label="Previous">‹</button>
+          <button class="gallery-arrow right" aria-label="Next">›</button>
+
+          <div class="gallery-track">
+            ${slidesHTML}
+          </div>
+
+          <div class="gallery-dots">
+            ${dotsHTML}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const closeBtn = overlay.querySelector(".photo-modal-close");
+  const track = overlay.querySelector(".gallery-track");
+  const dots = Array.from(overlay.querySelectorAll(".dot"));
+  const slides = Array.from(overlay.querySelectorAll(".slide"));
+  const leftBtn = overlay.querySelector(".gallery-arrow.left");
+  const rightBtn = overlay.querySelector(".gallery-arrow.right");
+
+  let current = 0;
+
+  function setActiveDot(i){
+    dots.forEach(d=>d.classList.remove("active"));
+    if(dots[i]) dots[i].classList.add("active");
+  }
+
+  function scrollToIndex(i){
+    current = Math.max(0, Math.min(i, slides.length - 1));
+    slides[current].scrollIntoView({behavior:"smooth", inline:"center", block:"nearest"});
+    setActiveDot(current);
+  }
+
+  leftBtn.addEventListener("click", ()=> scrollToIndex(current - 1));
+  rightBtn.addEventListener("click", ()=> scrollToIndex(current + 1));
+
+  dots.forEach(d=>{
+    d.addEventListener("click", ()=> scrollToIndex(Number(d.dataset.dot)));
+  });
+
+  // Update current index when user scrolls manually
+  track.addEventListener("scroll", ()=>{
+    // find slide closest to center
+    const trackRect = track.getBoundingClientRect();
+    const centerX = trackRect.left + trackRect.width / 2;
+
+    let bestIdx = 0;
+    let bestDist = Infinity;
+    slides.forEach((s, idx)=>{
+      const r = s.getBoundingClientRect();
+      const slideCenter = r.left + r.width/2;
+      const dist = Math.abs(centerX - slideCenter);
+      if(dist < bestDist){ bestDist = dist; bestIdx = idx; }
+    });
+
+    if(bestIdx !== current){
+      current = bestIdx;
+      setActiveDot(current);
+    }
+  });
+
+  // Close behaviors
+  function closeModal(){
+    overlay.remove();
+  }
+
+  closeBtn.addEventListener("click", closeModal);
+
+  // click outside modal closes
+  overlay.addEventListener("click", (e)=>{
+    if(e.target === overlay) closeModal();
+  });
+
+  // ESC closes
+  document.addEventListener("keydown", function escClose(e){
+    if(e.key === "Escape"){
+      closeModal();
+      document.removeEventListener("keydown", escClose);
+    }
+  });
+
+  // start at first image
+  scrollToIndex(0);
+}
+
+
+// Tabs for Explore section
+document.querySelectorAll(".tab").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const target = btn.dataset.tab;
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+    document.getElementById(target).classList.add("active");
+  });
+});
+
+// Make activity cards keyboard accessible (Enter/Space)
+document.addEventListener("keydown", (e)=>{
+  const el = document.activeElement;
+  if(!el || !el.classList || !el.classList.contains("activity-card")) return;
+  if(e.key === "Enter" || e.key === " "){
+    e.preventDefault();
+    el.click();
+  }
+});
+</script>
+
+</body>
+</html>
