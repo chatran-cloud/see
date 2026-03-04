@@ -6,12 +6,15 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(".")); // serves index.html
+app.use(express.static(".")); // serve frontend
 
 /* GOOGLE SHEETS SETUP */
 
+// read credentials from Render environment variable
+const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+
 const auth = new google.auth.GoogleAuth({
-  keyFile: "credentials.json",
+  credentials: credentials,
   scopes: ["https://www.googleapis.com/auth/spreadsheets"]
 });
 
@@ -20,7 +23,7 @@ const sheets = google.sheets({
   auth
 });
 
-const SPREADSHEET_ID = "1B3IBP8m7FRgmC1U2YDKSjI9zIWLCmRk6DZQt4ELjpdg";
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
 
 /* SAVE APPLICATION */
 
@@ -62,7 +65,7 @@ app.post("/apply", async (req,res)=>{
 
   }catch(err){
 
-    console.error(err);
+    console.error("GOOGLE SHEETS ERROR:", err);
 
     res.status(500).json({error:"failed"});
 
@@ -70,6 +73,8 @@ app.post("/apply", async (req,res)=>{
 
 });
 
-app.listen(3000,()=>{
-  console.log("Server running → http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT,()=>{
+  console.log(`Server running → http://localhost:${PORT}`);
 });
