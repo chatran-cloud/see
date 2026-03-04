@@ -9,9 +9,7 @@
 
 <style>
 
-html{
-  scroll-behavior:smooth;
-}
+
 
 :root{
   --bg:#0f1412;
@@ -42,7 +40,7 @@ body{
   width:100%;
   background:rgba(15,20,18,.95);
   padding:18px 0;
-  z-index:100;
+  z-index:10000;   /* higher than apply page */
 }
 
 .nav-links{
@@ -145,6 +143,30 @@ section{
   padding:120px 8%;
   background:var(--section);
 }
+/* ===== SEPARATE APPLICATION PAGE ===== */
+
+#apply-page{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+
+  background:#CBB69E;
+  overflow-y:auto;
+
+  z-index:9000;   /* higher than navbar */
+
+  transform:translateY(100%);
+  transition:transform .5s ease;
+
+  padding-top:120px;
+}
+
+/* visible state */
+#apply-page.show{
+  transform:translateY(0);
+}
 
 /* ===== APPLY SECTION ===== */
 
@@ -158,11 +180,7 @@ section{
   max-width:900px;
   margin:auto;
   position:relative;
-  
-}
-.modern-form{
-  position:relative;
-  
+
 }
 
 /* INTRO BLOCK */
@@ -325,6 +343,7 @@ section{
   color:#1b1b1b;
 }
 
+/* Background image layer */
 
 
 /* Improve form contrast */
@@ -1105,7 +1124,7 @@ footer{
 
     <div class="cta-row">
       <a class="get-started" href="#explore">Get Started</a>
-      <a class="get-started secondary" href="#positions">Inerested in joing?</a> 
+      <a class="get-started secondary" href="#positions">Interested in joining?</a> 
     </div>
   </div>
 </section>
@@ -1369,15 +1388,15 @@ footer{
         Vietnamese Club JD Booklet 
       </a>
 
-      <a href="#apply" class="apply-btn-cta">
-        Want to apply?
-      </a>
+      <a href="#apply" class="apply-btn-cta">Want to apply?</a>
     </div>
 
   </div>
 </section>
 
-<!-- APPLY -->
+<!-- APPLY PAGE (separate application layer) -->
+<section id="apply-page">
+
 <section id="apply" class="apply-section">
 
   <div class="apply-wrapper">
@@ -1411,30 +1430,26 @@ footer{
     <!-- Form -->
     <form class="modern-form">
 
-    
-       <div class="field-group">
-      <label>What is your Knox Email?</label>
-      <input type="email" required>
+      <div class="field-group">
+        <label>What is your Knox Email?</label>
+        <input type="email" required>
       </div>
-
-       <div class="field-group">
-      <label>What is your name?</label>
-      <input type="text" required>
-      </div>
-
-      
-       <div class="field-group">
-      <label>What is your class year?(e.g., Class of 2027)</label>
-      <input type="email" required>
-      </div>
-
 
       <div class="field-group">
-      <label>What motivates you to apply for a position on our Executive Board?</label>
-      <textarea required></textarea>
+        <label>What is your name?</label>
+        <input type="text" required>
       </div>
 
-    
+      <div class="field-group">
+        <label>What is your class year? (e.g., Class of 2027)</label>
+        <input type="text" required>
+      </div>
+
+      <div class="field-group">
+        <label>What motivates you to apply for a position on our Executive Board?</label>
+        <textarea required></textarea>
+      </div>
+
       <!-- Positions -->
       <div class="checkbox-section">
         <p class="checkbox-title">What position(s) are you interested in?</p>
@@ -1460,37 +1475,35 @@ footer{
         </label>
       </div>
 
-    
       <div class="field-group">
-      <label>What skills, experiences, or qualities make you a strong candidate?</label>
-      <textarea required></textarea>
+        <label>What skills, experiences, or qualities make you a strong candidate?</label>
+        <textarea required></textarea>
       </div>
 
       <div class="field-group">
-      <label>Which of our previous events have you attended or heard about? What stood out to you?</label>
-      <textarea required></textarea>
+        <label>Which of our previous events have you attended or heard about? What stood out to you?</label>
+        <textarea required></textarea>
       </div>
 
-
-    
       <div class="field-group">
-      <label>Preferred means of communication (Instagram, WhatsApp, etc.)</label>
-      <input type="email" required>
+        <label>Preferred means of communication (Instagram, WhatsApp, etc.)</label>
+        <input type="text" required>
       </div>
 
-      
       <div class="field-group">
-      <label>Anything else you'd like to share?</label>
-      <textarea required></textarea>
+        <label>Anything else you'd like to share?</label>
+        <textarea required></textarea>
       </div>
 
       <div class="submit-wrap">
-        <button type="submit">Submit Application </button>
+        <button type="submit">Submit Application</button>
       </div>
 
     </form>
 
   </div>
+
+</section>
 </section>
 <footer>
 © 2026 Vietnamese Club
@@ -1698,8 +1711,86 @@ document.querySelectorAll(".view-btn").forEach(btn=>{
 
 
 /* ---------- SUPER RELIABLE SLIDE SCROLL (manual animation) ---------- */
+(function () {
+  function easeInOutCubic(t){
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+  }
 
+  function animateScrollTo(targetY, duration=700){
+    const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const diff = targetY - startY;
+    const start = performance.now();
 
+    function step(now){
+      const elapsed = now - start;
+      const t = Math.min(1, elapsed / duration);
+      const eased = easeInOutCubic(t);
+      window.scrollTo(0, startY + diff * eased);
+      if(t < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function goToHash(hash){
+    const target = document.querySelector(hash);
+    if(!target) return;
+
+    const nav = document.querySelector(".navbar");
+    const navH = nav ? nav.offsetHeight : 0;
+
+    const y = target.getBoundingClientRect().top + window.scrollY - navH - 60;
+    animateScrollTo(y, 800);
+  }
+
+  // Intercept ALL internal anchor clicks (navbar + buttons)
+ document.addEventListener("click", (e) => {
+
+  const a = e.target.closest('a[href^="#"]');
+  if(!a) return;
+
+  const hash = a.getAttribute("href");
+
+  /* DO NOT intercept the apply page */
+  if(hash === "#apply") return;
+
+  const target = document.querySelector(hash);
+  if(!target) return;
+
+  e.preventDefault();
+  history.pushState(null, "", hash);
+  goToHash(hash);
+});
+  // If user loads page with #apply etc.
+  window.addEventListener("load", () => {
+    if(location.hash) goToHash(location.hash);
+  });
+})();
+const applyPage = document.getElementById("apply-page");
+
+/* Show apply when hash is #apply */
+function handleRouting() {
+  if (window.location.hash === "#apply") {
+    applyPage.classList.add("show");
+  } else {
+    applyPage.classList.remove("show");
+  }
+}
+
+/* Run on page load */
+handleRouting();
+
+/* Run when hash changes */
+window.addEventListener("hashchange", handleRouting);
+
+/* Close apply automatically when clicking other nav links */
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    if (link.getAttribute("href") !== "#apply") {
+      applyPage.classList.remove("show");
+    }
+  });
+});
 </script>
 
 
