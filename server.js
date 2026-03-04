@@ -74,17 +74,18 @@ app.post("/apply", async (req, res) => {
 
     res.json({ status: "success" });
 
-  } catch (err) {
+  catch(err){
 
-    console.error("APPLICATION ERROR:");
-    console.error(err.message);
+  console.error("APPLICATION ERROR:");
+  console.error(err);
+  console.error(err.message);
+  console.error(err.stack);
 
-    res.status(500).json({
-      error: "Submission failed"
-    });
+  res.status(500).json({
+    error:"Submission failed"
+  });
 
-  }
-
+}
 });
 
 /* =========================
@@ -104,4 +105,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
