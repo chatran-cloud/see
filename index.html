@@ -1766,127 +1766,12 @@ document.querySelectorAll(".view-btn").forEach(btn=>{
     if(location.hash) goToHash(location.hash);
   });
 })();
-const applyPage = document.getElementById("apply-page");
-
-/* Show apply when hash is #apply */
-function handleRouting() {
-  if (window.location.hash === "#apply") {
-    applyPage.classList.add("show");
-  } else {
-    applyPage.classList.remove("show");
-  }
-}
-
-/* Run on page load */
-handleRouting();
-
-/* Run when hash changes */
-window.addEventListener("hashchange", handleRouting);
-
-/* Close apply automatically when clicking other nav links */
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    if (link.getAttribute("href") !== "#apply") {
-      applyPage.classList.remove("show");
-    }
-  });
-});
-</script>
-<script>
-
-const form = document.querySelector(".modern-form");
-
-form.addEventListener("submit", async (e)=>{
-
-  e.preventDefault();
-
-  const formData = new FormData(form);
-
-  const data = {};
-
-  formData.forEach((value,key)=>{
-
-    if(data[key]){
-
-      if(Array.isArray(data[key])){
-        data[key].push(value);
-      }else{
-        data[key] = [data[key], value];
-      }
-
-    }else{
-      data[key] = value;
-    }
-
-  });
-
-  if(Array.isArray(data.positions)){
-    data.positions = data.positions.join(", ");
-  }
-
-  const res = await fetch("/apply",{
-    method:"POST",
-    headers:{
-      "Content-Type":"/json"
-    },
-    body:JSON.stringify(data)
-  });
-
-  if(res.ok){
-
-    alert("Application submitted successfully! It’s always a bit of a waiting game now, but fingers crossed for great news.");
-
-    form.reset();
-
-  }else{
-
-    alert("Submission failed.");
-
-  }
-
-});
-
-const applyPage = document.getElementById("apply-page");
-const joinBtn = document.getElementById("joinBtn");
-const applyBtn = document.getElementById("applyBtn");
-
-/* open apply page */
-function openApplyPage(){
-  applyPage.classList.add("show");
-  document.body.style.overflow="hidden";
-}
-
-/* close apply page */
-function closeApplyPage(){
-  applyPage.classList.remove("show");
-  document.body.style.overflow="auto";
-}
-
-/* navbar join button */
-joinBtn.addEventListener("click",(e)=>{
-  e.preventDefault();
-  openApplyPage();
-});
-
-/* positions apply button */
-applyBtn.addEventListener("click",(e)=>{
-  e.preventDefault();
-  openApplyPage();
-});
-
-/* close when clicking other navbar links */
-document.querySelectorAll(".nav-links a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    if(link.id !== "joinBtn"){
-      closeApplyPage();
-    }
-  });
-});
 
 </script>
 
 </body>
 </html>
+
 
 
 
