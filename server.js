@@ -33,7 +33,7 @@ const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
 async function saveApplication(data) {
 
   const values = [[
-    new Date().toISOString(),
+    new Date().toLocaleString("en-US", { timeZone: "America/Chicago" })
     data.email || "",
     data.name || "",
     data.year || "",
@@ -102,3 +102,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
