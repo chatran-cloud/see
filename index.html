@@ -9,7 +9,9 @@
 
 <style>
 
-
+html{
+  scroll-behavior:smooth;
+}
 
 :root{
   --bg:#0f1412;
@@ -155,6 +157,12 @@ section{
 .apply-wrapper{
   max-width:900px;
   margin:auto;
+  position:relative;
+  
+}
+.modern-form{
+  position:relative;
+  
 }
 
 /* INTRO BLOCK */
@@ -210,6 +218,9 @@ section{
   display:flex;
   flex-direction:column;
   gap:8px;
+  position:relative;
+   z-index:3;
+
 }
 
 .field-group label{
@@ -242,6 +253,9 @@ section{
   box-shadow:0 0 0 2px rgba(95,103,84,.2);
 }
 /* CHECKBOX SECTION */
+.checkbox-section{
+  margin-top:10px;
+}
 
 .checkbox-section{
   background:rgba(255,255,255,.75);
@@ -304,39 +318,14 @@ section{
 /* ===== JOIN SECTION WITH BLURRED IMAGE ===== */
 
 #apply{
-  position:relative;
   padding:120px 8%;
-  background:#CBB69E;
-  overflow:hidden;
+  background:
+  linear-gradient(rgba(203,182,158,.92), rgba(203,182,158,.92)),
+  url("background.jpg") center/cover no-repeat;
   color:#1b1b1b;
 }
 
-/* Background image layer */
-#apply::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    url("background.jpg") center/cover no-repeat;
-  filter:blur(6px);
-  transform:scale(1.1); /* prevents blur edge cropping */
-  z-index:0;
-}
 
-/* Warm overlay tint */
-#apply::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(203,182,158,.75); /* matches #CBB69E */
-  z-index:1;
-}
-
-/* Keep content above blur */
-#apply > *{
-  position:relative;
-  z-index:2;
-}
 
 /* Improve form contrast */
 #apply input,
@@ -711,7 +700,9 @@ p{
   margin-bottom:20px;
 }
 
-input, select, textarea{
+.form-card input,
+.form-card select,
+.form-card textarea{
   width:100%;
   padding:12px;
   background:#222;
@@ -1114,7 +1105,7 @@ footer{
 
     <div class="cta-row">
       <a class="get-started" href="#explore">Get Started</a>
-      <a class="get-started secondary" href="#positions">Interested in joining?</a> 
+      <a class="get-started secondary" href="#positions">Inerested in joing?</a> 
     </div>
   </div>
 </section>
@@ -1422,27 +1413,28 @@ footer{
 
     
        <div class="field-group">
-      <label>What is your Knox email?
+      <label>What is your Knox Email?</label>
       <input type="email" required>
       </div>
 
        <div class="field-group">
-      <label>What is your name?
-      <input type="email" required>
+      <label>What is your name?</label>
+      <input type="text" required>
       </div>
 
       
        <div class="field-group">
-      <label>What is your class year?(e.g., Class of 2027)
+      <label>What is your class year?(e.g., Class of 2027)</label>
       <input type="email" required>
       </div>
+
 
       <div class="field-group">
       <label>What motivates you to apply for a position on our Executive Board?</label>
       <textarea required></textarea>
       </div>
-      
 
+    
       <!-- Positions -->
       <div class="checkbox-section">
         <p class="checkbox-title">What position(s) are you interested in?</p>
@@ -1474,15 +1466,21 @@ footer{
       <textarea required></textarea>
       </div>
 
+      <div class="field-group">
+      <label>Which of our previous events have you attended or heard about? What stood out to you?</label>
+      <textarea required></textarea>
+      </div>
+
+
     
       <div class="field-group">
-      <label>Preferred means of communication (Instagram, WhatsApp, etc.)
+      <label>Preferred means of communication (Instagram, WhatsApp, etc.)</label>
       <input type="email" required>
       </div>
 
       
       <div class="field-group">
-      <label>Anything else you'd like to share?
+      <label>Anything else you'd like to share?</label>
       <textarea required></textarea>
       </div>
 
@@ -1700,59 +1698,8 @@ document.querySelectorAll(".view-btn").forEach(btn=>{
 
 
 /* ---------- SUPER RELIABLE SLIDE SCROLL (manual animation) ---------- */
-(function () {
-  function easeInOutCubic(t){
-    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
-  }
 
-  function animateScrollTo(targetY, duration=700){
-    const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
-    const diff = targetY - startY;
-    const start = performance.now();
 
-    function step(now){
-      const elapsed = now - start;
-      const t = Math.min(1, elapsed / duration);
-      const eased = easeInOutCubic(t);
-      window.scrollTo(0, startY + diff * eased);
-      if(t < 1) requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  function goToHash(hash){
-    const target = document.querySelector(hash);
-    if(!target) return;
-
-    const nav = document.querySelector(".navbar");
-    const navH = nav ? nav.offsetHeight : 0;
-
-    const y = target.getBoundingClientRect().top + (window.pageYOffset || 0) - navH;
-    animateScrollTo(y, 800);
-  }
-
-  // Intercept ALL internal anchor clicks (navbar + buttons)
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if(!a) return;
-
-    const hash = a.getAttribute("href");
-    if(!hash || hash === "#") return;
-
-    const target = document.querySelector(hash);
-    if(!target) return;
-
-    e.preventDefault();
-    history.pushState(null, "", hash);
-    goToHash(hash);
-  });
-
-  // If user loads page with #apply etc.
-  window.addEventListener("load", () => {
-    if(location.hash) goToHash(location.hash);
-  });
-})();
 </script>
 
 
