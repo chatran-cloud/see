@@ -9,7 +9,7 @@
 
 <style>
 
-html{scroll-behavior:smooth;}
+
 
 :root{
   --bg:#0f1412;
@@ -206,21 +206,29 @@ section{
 /* Floating Inputs */
 
 /* ===== FIXED FLOATING LABELS ===== */
-
 .field-group{
-  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.field-group label{
+  font-size:14px;
+  font-weight:600;
+  color:#3a3a3a;
 }
 
 .field-group input,
 .field-group textarea{
   width:100%;
-  padding:20px 14px 12px 14px; /* extra top space */
-  border-radius:12px;
-  border:1px solid rgba(0,0,0,.2);
-  background:rgba(255,255,255,.9);
+  padding:14px 16px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.95);
   font-size:15px;
+  color:#111;
   outline:none;
-  transition:.3s;
+  transition:.25s;
 }
 
 .field-group textarea{
@@ -228,26 +236,11 @@ section{
   resize:vertical;
 }
 
-.field-group label{
-  position:absolute;
-  left:14px;
-  top:18px;
-  font-size:14px;
-  color:#666;
-  transition:.3s ease;
-  pointer-events:none;
+.field-group input:focus,
+.field-group textarea:focus{
+  border-color:#5f6754;
+  box-shadow:0 0 0 2px rgba(95,103,84,.2);
 }
-
-/* Move label up when input has content OR focus */
-.field-group input:focus + label,
-.field-group textarea:focus + label,
-.field-group input:not(:focus):valid + label,
-.field-group textarea:not(:focus):valid + label{
-  top:4px;
-  font-size:12px;
-  color:#5f6754;
-}
-
 /* CHECKBOX SECTION */
 
 .checkbox-section{
@@ -850,7 +843,7 @@ button:hover{
   font-size:16px;
   text-decoration:none;
   color:white;
-  background:linear-gradient(135deg,#f7971e,#ff512f,#9b5de5);
+  background:linear-gradient(135deg,#5f6754,#3e4436);
   transition:.35s;
   white-space:nowrap;
 }
@@ -1121,7 +1114,7 @@ footer{
 
     <div class="cta-row">
       <a class="get-started" href="#explore">Get Started</a>
-      <a class="get-started secondary" href="#apply">Join Now</a>
+      <a class="get-started secondary" href="#positions">Interested in joining?</a> 
     </div>
   </div>
 </section>
@@ -1170,7 +1163,7 @@ footer{
 
         <div class="card activity-card" onclick="openActivity('midAutumn')" role="button" tabindex="0">
           <div class="activity-top">
-            <p class="card-title">Mid Autumn Festival x ASA</p>
+            <p class="card-title">Mid Autumn Festival </p>
             <span class="badge">Lantern</span>
           </div>
           <p class="card-desc">Lantern lights, mooncakes, and community gathering.</p>
@@ -1179,7 +1172,7 @@ footer{
 
         <div class="card activity-card" onclick="openActivity('internationalFair')" role="button" tabindex="0">
           <div class="activity-top">
-            <p class="card-title">International Fair x ICLUB</p>
+            <p class="card-title">International Fair</p>
             <span class="badge">Culture</span>
           </div>
           <p class="card-desc">Serving Bún Thịt Nướng and showcasing Vietnamese culture.</p>
@@ -1197,7 +1190,7 @@ footer{
 
         <div class="card activity-card" onclick="openActivity('newYear')" role="button" tabindex="0">
           <div class="activity-top">
-            <p class="card-title">New Year Event x ASA</p>
+            <p class="card-title">New Year Event</p>
             <span class="badge">Celebration</span>
           </div>
           <p class="card-desc">Traditional games and festive celebration.</p>
@@ -1215,7 +1208,7 @@ footer{
 
         <div class="card activity-card" onclick="openActivity('calligraphy')" role="button" tabindex="0">
           <div class="activity-top">
-            <p class="card-title">Calligraphy Night x ASA</p>
+            <p class="card-title">Calligraphy Night</p>
             <span class="badge">Art</span>
           </div>
           <p class="card-desc">Exploring Vietnamese calligraphy and cultural art.</p>
@@ -1382,11 +1375,11 @@ footer{
 
     <div class="ready-right">
       <a href="https://docs.google.com/document/d/17NPL_bi0nmIYlkuiEzGMBbd1d02RC8oHATKJbngQ6qA/edit?tab=t.0" target="_blank" class="jd-btn">
-        JD Booklet 2026–2027 
+        Vietnamese Club JD Booklet 
       </a>
 
       <a href="#apply" class="apply-btn-cta">
-        Apply Now 
+        Want to apply?
       </a>
     </div>
 
@@ -1427,30 +1420,28 @@ footer{
     <!-- Form -->
     <form class="modern-form">
 
-      <div class="field-group">
-        <input type="email" required>
-        <label>What is your Knox email?</label>
+    
+       <div class="field-group">
+      <label>What is your Knox email?
+      <input type="email" required>
+      </div>
+
+       <div class="field-group">
+      <label>What is your name?
+      <input type="email" required>
+      </div>
+
+      
+       <div class="field-group">
+      <label>What is your class year?(e.g., Class of 2027)
+      <input type="email" required>
       </div>
 
       <div class="field-group">
-        <input type="text" required>
-        <label>What is your name?</label>
+      <label>What motivates you to apply for a position on our Executive Board?</label>
+      <textarea required></textarea>
       </div>
-
-      <div class="field-group">
-        <input type="text" required>
-        <label>What is your class year? (e.g., Class of 2027)</label>
-      </div>
-
-      <div class="field-group textarea-group">
-        <textarea required></textarea>
-        <label>What motivates you to apply for a position on our Executive Board?</label>
-      </div>
-
-      <div class="field-group textarea-group">
-        <textarea required></textarea>
-        <label>Which previous events have you attended or heard about? What stood out to you?</label>
-      </div>
+      
 
       <!-- Positions -->
       <div class="checkbox-section">
@@ -1477,19 +1468,22 @@ footer{
         </label>
       </div>
 
-      <div class="field-group textarea-group">
-        <textarea required></textarea>
-        <label>What skills, experiences, or qualities make you a strong candidate?</label>
+    
+      <div class="field-group">
+      <label>What skills, experiences, or qualities make you a strong candidate?</label>
+      <textarea required></textarea>
       </div>
 
+    
       <div class="field-group">
-        <input type="text" required>
-        <label>Preferred means of communication (Instagram, WhatsApp, etc.)</label>
+      <label>Preferred means of communication (Instagram, WhatsApp, etc.)
+      <input type="email" required>
       </div>
 
+      
       <div class="field-group">
-        <input type="text" required>
-        <label>Anything else you'd like to share?</label>
+      <label>Anything else you'd like to share?
+      <textarea required></textarea>
       </div>
 
       <div class="submit-wrap">
@@ -1514,13 +1508,13 @@ const activityData = {
   },
 
   midAutumn:{
-    title:"Mid Autumn Festival x ASA",
+    title:"Mid Autumn Festival",
     imgs:["e6.png","e2.png","e3.png","e4.png","e5.png","e1.png"],
     text:"Lantern lights and mooncakes."
   },
 
   internationalFair:{
-    title:"International Fair x ICLUB",
+    title:"International Fair",
     imgs:["f10.png","f2.png","f9.png","f7.png","iclub.jpg","f5.png","f1.png","f6.png","f3.png"],
     text:"Food, dance, and cultural showcase."
   },
@@ -1532,7 +1526,7 @@ const activityData = {
   },
 
   newYear:{
-    title:"New Year Event x ASA",
+    title:"New Year Event",
     imgs:["n1.png","n2.png","n3.png","n4.png","n5.png","n6.png"],
     text:"Festive New Year celebration."
   },
@@ -1544,7 +1538,7 @@ const activityData = {
   },
 
   calligraphy:{
-    title:"Calligraphy Night x ASA",
+    title:"Calligraphy Night",
     imgs:["tbd.png"],
     text:"Exploring traditional calligraphy."
   }
@@ -1703,7 +1697,64 @@ document.querySelectorAll(".view-btn").forEach(btn=>{
     card.classList.toggle("active");
   });
 });
+
+
+/* ---------- SUPER RELIABLE SLIDE SCROLL (manual animation) ---------- */
+(function () {
+  function easeInOutCubic(t){
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+  }
+
+  function animateScrollTo(targetY, duration=700){
+    const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const diff = targetY - startY;
+    const start = performance.now();
+
+    function step(now){
+      const elapsed = now - start;
+      const t = Math.min(1, elapsed / duration);
+      const eased = easeInOutCubic(t);
+      window.scrollTo(0, startY + diff * eased);
+      if(t < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function goToHash(hash){
+    const target = document.querySelector(hash);
+    if(!target) return;
+
+    const nav = document.querySelector(".navbar");
+    const navH = nav ? nav.offsetHeight : 0;
+
+    const y = target.getBoundingClientRect().top + (window.pageYOffset || 0) - navH;
+    animateScrollTo(y, 800);
+  }
+
+  // Intercept ALL internal anchor clicks (navbar + buttons)
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+
+    const hash = a.getAttribute("href");
+    if(!hash || hash === "#") return;
+
+    const target = document.querySelector(hash);
+    if(!target) return;
+
+    e.preventDefault();
+    history.pushState(null, "", hash);
+    goToHash(hash);
+  });
+
+  // If user loads page with #apply etc.
+  window.addEventListener("load", () => {
+    if(location.hash) goToHash(location.hash);
+  });
+})();
 </script>
+
 
 </body>
 </html>
