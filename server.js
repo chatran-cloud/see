@@ -30,10 +30,10 @@ const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
    SAVE APPLICATION
 ========================= */
 
-async function saveApplication(data) {
+async function saveApplication(data){
 
   const values = [[
-    new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
+    new Date().toLocaleString("en-US", { timeZone: "America/Chicago" }),
     data.email || "",
     data.name || "",
     data.year || "",
@@ -53,7 +53,7 @@ async function saveApplication(data) {
   });
 
 }
-
+  
 /* =========================
    APPLICATION ROUTE
 ========================= */
