@@ -181,7 +181,7 @@ section{
   max-width:900px;
   margin:auto;
   position:relative;
-
+  z-index:1; /* keeps content above background */
 }
 
 /* INTRO BLOCK */
@@ -336,17 +336,25 @@ section{
 
 /* ===== JOIN SECTION WITH BLURRED IMAGE ===== */
 
+/* ===== APPLY HERO STYLE (MATCH HOME) ===== */
+
 #apply{
   min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:140px 8%;
+
   background-color:transparent !important;
   background-image:
-    linear-gradient(rgba(203,182,158,.55), rgba(203,182,158,.55)),
+    linear-gradient(rgba(10,12,11,.70), rgba(10,12,11,.70)),
     url("background.jpg");
   background-position:center;
   background-size:cover;
   background-repeat:no-repeat;
-}
 
+  color:white;
+}
 /* Background image layer */
 
 
@@ -1854,6 +1862,7 @@ form.addEventListener("submit", async (e)=>{
 
 </body>
 </html>
+
 
 
 
