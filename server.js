@@ -8,9 +8,10 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(".")); // serve frontend
 
-/* GOOGLE SHEETS SETUP */
+/* =========================
+   GOOGLE AUTH
+========================= */
 
-// read credentials from Render environment variable
 const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 
 const auth = new google.auth.GoogleAuth({
@@ -25,56 +26,79 @@ const sheets = google.sheets({
 
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
 
-/* SAVE APPLICATION */
+/* =========================
+   SAVE APPLICATION
+========================= */
 
 async function saveApplication(data) {
+
+  const values = [[
+    new Date().toISOString(),
+    data.email || "",
+    data.name || "",
+    data.year || "",
+    data.motivation || "",
+    data.positions || "",
+    data.skills || "",
+    data.events || "",
+    data.communication || "",
+    data.extra || ""
+  ]];
 
   await sheets.spreadsheets.values.append({
     spreadsheetId: SPREADSHEET_ID,
     range: "Sheet1!A1",
     valueInputOption: "USER_ENTERED",
-    requestBody: {
-      values: [[
-        new Date().toLocaleString(),
-        data.email,
-        data.name,
-        data.year,
-        data.motivation,
-        data.positions,
-        data.skills,
-        data.events,
-        data.communication,
-        data.extra
-      ]]
-    }
+    requestBody: { values }
   });
 
 }
 
-/* API ROUTE */
+/* =========================
+   APPLICATION ROUTE
+========================= */
 
-app.post("/apply", async (req,res)=>{
+app.post("/apply", async (req, res) => {
 
-  try{
+  try {
 
     const data = req.body;
 
+    if (!data.email || !data.name) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
     await saveApplication(data);
 
-    res.json({status:"success"});
+    res.json({ status: "success" });
 
-  }catch(err){
+  } catch (err) {
 
-    console.error("GOOGLE SHEETS ERROR:", err);
+    console.error("APPLICATION ERROR:");
+    console.error(err.message);
 
-    res.status(500).json({error:"failed"});
+    res.status(500).json({
+      error: "Submission failed"
+    });
 
   }
 
 });
 
+/* =========================
+   HEALTH CHECK
+========================= */
+
+app.get("/", (req,res)=>{
+  res.send("VSA Knox application server running");
+});
+
+/* =========================
+   START SERVER
+========================= */
+
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,()=>{
-  console.log(`Server running → http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
