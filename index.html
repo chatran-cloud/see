@@ -1432,22 +1432,22 @@ footer{
 
       <div class="field-group">
         <label>What is your Knox Email?</label>
-        <input type="email" required>
+        <input type="email" name="email" required>
       </div>
 
       <div class="field-group">
         <label>What is your name?</label>
-        <input type="text" required>
+       <input type="text" name="name" required>
       </div>
 
       <div class="field-group">
         <label>What is your class year? (e.g., Class of 2027)</label>
-        <input type="text" required>
+        <input type="text" name="year" required>
       </div>
 
       <div class="field-group">
         <label>What motivates you to apply for a position on our Executive Board?</label>
-        <textarea required></textarea>
+        <textarea name="motivation" required></textarea>
       </div>
 
       <!-- Positions -->
@@ -1455,44 +1455,44 @@ footer{
         <p class="checkbox-title">What position(s) are you interested in?</p>
 
         <label class="checkbox-item">
-          <input type="checkbox">
+          <input type="checkbox" name="positions" value="Co-Outreach">
           <span>Co-Outreach Coordinator</span>
         </label>
 
         <label class="checkbox-item">
-          <input type="checkbox">
+          <input type="checkbox" name="positions" value="Co-Public Relations">
           <span>Co-Public Relations</span>
         </label>
 
         <label class="checkbox-item">
-          <input type="checkbox">
+          <input type="checkbox" name="positions" value="Treasurer">
           <span>Treasurer</span>
         </label>
 
         <label class="checkbox-item">
-          <input type="checkbox">
+          <input type="checkbox" name="positions" value="Secretary">
           <span>Secretary</span>
         </label>
       </div>
 
       <div class="field-group">
         <label>What skills, experiences, or qualities make you a strong candidate?</label>
-        <textarea required></textarea>
+        <textarea name="skills" required></textarea>
       </div>
 
       <div class="field-group">
         <label>Which of our previous events have you attended or heard about? What stood out to you?</label>
-        <textarea required></textarea>
+        <textarea name="events" required></textarea>
       </div>
 
       <div class="field-group">
         <label>Preferred means of communication (Instagram, WhatsApp, etc.)</label>
-        <input type="text" required>
+        <input type="text" name="communication" required>
       </div>
 
       <div class="field-group">
         <label>Anything else you'd like to share?</label>
-        <textarea required></textarea>
+        <textarea name="extra" required></textarea>
       </div>
 
       <div class="submit-wrap">
@@ -1792,7 +1792,61 @@ document.querySelectorAll(".nav-links a").forEach(link => {
   });
 });
 </script>
+<script>
 
+const form = document.querySelector(".modern-form");
+
+form.addEventListener("submit", async (e)=>{
+
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  const data = {};
+
+  formData.forEach((value,key)=>{
+
+    if(data[key]){
+
+      if(Array.isArray(data[key])){
+        data[key].push(value);
+      }else{
+        data[key] = [data[key], value];
+      }
+
+    }else{
+      data[key] = value;
+    }
+
+  });
+
+  if(Array.isArray(data.positions)){
+    data.positions = data.positions.join(", ");
+  }
+
+  const res = await fetch("/apply",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify(data)
+  });
+
+  if(res.ok){
+
+    alert("Application submitted successfully!");
+
+    form.reset();
+
+  }else{
+
+    alert("Submission failed.");
+
+  }
+
+});
+
+</script>
 
 </body>
 </html>
