@@ -337,11 +337,14 @@ section{
 /* ===== JOIN SECTION WITH BLURRED IMAGE ===== */
 
 #apply{
-  padding:120px 8%;
-  background:
-  linear-gradient(rgba(203,182,158,.70), rgba(203,182,158,.70)),
-  url("background.jpg") center/cover no-repeat;
-  color:#1b1b1b;
+  min-height:100vh;
+  background-color:transparent !important;
+  background-image:
+    linear-gradient(rgba(203,182,158,.55), rgba(203,182,158,.55)),
+    url("background.jpg");
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
 }
 
 /* Background image layer */
@@ -1851,6 +1854,7 @@ form.addEventListener("submit", async (e)=>{
 
 </body>
 </html>
+
 
 
 
