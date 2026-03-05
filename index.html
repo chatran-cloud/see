@@ -1098,6 +1098,33 @@ footer{
   color:#777;
 }
 
+.footer-links{
+  margin-top:12px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  align-items:center;
+}
+
+.footer-links a{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+  color:#aaa;
+  font-size:13px;
+  transition:.25s;
+}
+
+.footer-links a:hover{
+  color:white;
+}
+
+.footer-links img{
+  height:18px;
+  width:auto;
+}
+
 </style>
 </head>
 
@@ -1506,7 +1533,23 @@ footer{
 </section>
 </section>
 <footer>
-© 2026 Vietnamese Club
+
+  <div>© 2026 Vietnamese Club</div>
+
+  <div class="footer-links">
+
+    <a href="https://www.instagram.com/" target="_blank">
+      <img src="ig.png" alt="Instagram">
+      Instagram
+    </a>
+
+    <a href="https://www.knox.edu/" target="_blank">
+      <img src="knox.png" alt="Knox College">
+      Knox College
+    </a>
+
+  </div>
+
 </footer>
 
 <script>
@@ -1850,6 +1893,7 @@ form.addEventListener("submit", async (e)=>{
 
 </body>
 </html>
+
 
 
 
