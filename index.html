@@ -613,19 +613,27 @@ section{
   cursor:pointer;
 }
 
-.activity-image{
+.activity-thumb{
   width:100%;
-  height:160px;
+  height:150px;
   border-radius:14px;
   overflow:hidden;
+  margin-bottom:14px;
 }
 
-.activity-image img{
+.activity-thumb img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
+  transition:.35s;
 }
+
+.activity-card:hover .activity-thumb img{
+  transform:scale(1.08);
+}
+
+
 
   
 /* project cards: thumbnail */
@@ -1180,13 +1188,14 @@ footer{
   </div>
 </section>
 
-
 <section id="explore" class="merged-section">
 
   <div class="merged-header">
     <div>
       <h1 class="merged-title">Activities and Projects</h1>
-      <p class="merged-sub">Explore our events and the interactive sites built for the Knox community.</p>
+      <p class="merged-sub">
+        Explore our events and the interactive sites built for the Knox community.
+      </p>
     </div>
   </div>
 
@@ -1206,138 +1215,153 @@ footer{
       <div class="grid">
 
         <!-- Teacher -->
-        <div class="activity-item" onclick="openActivity('teacher')" role="button" tabindex="0">
-          <div class="activity-image">
+        <div class="card activity-card" onclick="openActivity('teacher')" role="button" tabindex="0">
+
+          <div class="activity-thumb">
             <img src="teach.png" alt="Teacher's Day">
           </div>
 
-          <div class="card activity-card">
-            <div class="activity-top">
-              <p class="card-title">Vietnamese Teacher's Day</p>
-              <span class="badge">Tradition</span>
-            </div>
-            <p class="card-desc">
-              Celebrating gratitude for mentors and professors who guided us on our educational journey.
-            </p>
-            <div class="card-cta">View photos</div>
+          <div class="activity-top">
+            <p class="card-title">Vietnamese Teacher's Day</p>
+            <span class="badge">Tradition</span>
           </div>
+
+          <p class="card-desc">
+            Celebrating gratitude for mentors and professors who guided us on our educational journey.
+          </p>
+
+          <div class="card-cta">View photos</div>
+
         </div>
 
 
         <!-- Mid Autumn -->
-        <div class="activity-item" onclick="openActivity('midAutumn')" role="button" tabindex="0">
-          <div class="activity-image">
+        <div class="card activity-card" onclick="openActivity('midAutumn')" role="button" tabindex="0">
+
+          <div class="activity-thumb">
             <img src="au.png" alt="Mid Autumn Festival">
           </div>
 
-          <div class="card activity-card">
-            <div class="activity-top">
-              <p class="card-title">Mid Autumn Festival</p>
-              <span class="badge">Lantern</span>
-            </div>
-            <p class="card-desc">
-              Lantern lights, mooncakes, and community gathering.
-            </p>
-            <div class="card-cta">View photos</div>
+          <div class="activity-top">
+            <p class="card-title">Mid Autumn Festival</p>
+            <span class="badge">Lantern</span>
           </div>
+
+          <p class="card-desc">
+            Lantern lights, mooncakes, and community gathering.
+          </p>
+
+          <div class="card-cta">View photos</div>
+
         </div>
 
 
         <!-- International Fair -->
-        <div class="activity-item" onclick="openActivity('internationalFair')" role="button" tabindex="0">
-          <div class="activity-image">
+        <div class="card activity-card" onclick="openActivity('internationalFair')" role="button" tabindex="0">
+
+          <div class="activity-thumb">
             <img src="f10.png" alt="International Fair">
           </div>
 
-          <div class="card activity-card">
-            <div class="activity-top">
-              <p class="card-title">International Fair</p>
-              <span class="badge">Culture</span>
-            </div>
-            <p class="card-desc">
-              Serving Bún Thịt Nướng and showcasing Vietnamese culture.
-            </p>
-            <div class="card-cta">View photos</div>
+          <div class="activity-top">
+            <p class="card-title">International Fair</p>
+            <span class="badge">Culture</span>
           </div>
+
+          <p class="card-desc">
+            Serving Bún Thịt Nướng and showcasing Vietnamese culture.
+          </p>
+
+          <div class="card-cta">View photos</div>
+
         </div>
 
 
         <!-- Gathering -->
-        <div class="activity-item" onclick="openActivity('gathering')" role="button" tabindex="0">
-          <div class="activity-image">
+        <div class="card activity-card" onclick="openActivity('gathering')" role="button" tabindex="0">
+
+          <div class="activity-thumb">
             <img src="gathering.png" alt="Vietnamese Gathering">
           </div>
 
-          <div class="card activity-card">
-            <div class="activity-top">
-              <p class="card-title">Vietnamese First Gathering 2025</p>
-              <span class="badge">Community</span>
-            </div>
-            <p class="card-desc">
-              Welcoming new Vietnamese students to Knox.
-            </p>
-            <div class="card-cta">View photos</div>
+          <div class="activity-top">
+            <p class="card-title">Vietnamese First Gathering 2025</p>
+            <span class="badge">Community</span>
           </div>
+
+          <p class="card-desc">
+            Welcoming new Vietnamese students to Knox.
+          </p>
+
+          <div class="card-cta">View photos</div>
+
         </div>
 
 
         <!-- New Year -->
-        <div class="activity-item" onclick="openActivity('newYear')" role="button" tabindex="0">
-          <div class="activity-image">
+        <div class="card activity-card" onclick="openActivity('newYear')" role="button" tabindex="0">
+
+          <div class="activity-thumb">
             <img src="year.png" alt="New Year Event">
           </div>
 
-          <div class="card activity-card">
-            <div class="activity-top">
-              <p class="card-title">New Year Event</p>
-              <span class="badge">Celebration</span>
-            </div>
-            <p class="card-desc">
-              Traditional games and festive celebration.
-            </p>
-            <div class="card-cta">View photos</div>
+          <div class="activity-top">
+            <p class="card-title">New Year Event</p>
+            <span class="badge">Celebration</span>
           </div>
+
+          <p class="card-desc">
+            Traditional games and festive celebration.
+          </p>
+
+          <div class="card-cta">View photos</div>
+
         </div>
 
 
         <!-- Trivia -->
-        <div class="activity-item" onclick="openActivity('trivia')" role="button" tabindex="0">
-          <div class="activity-image">
+        <div class="card activity-card" onclick="openActivity('trivia')" role="button" tabindex="0">
+
+          <div class="activity-thumb">
             <img src="brain.png" alt="Trivia Night">
           </div>
 
-          <div class="card activity-card">
-            <div class="activity-top">
-              <p class="card-title">Brain Busters Trivia Night</p>
-              <span class="badge">Fun</span>
-            </div>
-            <p class="card-desc">
-              Competitive trivia night with food and prizes.
-            </p>
-            <div class="card-cta">View photos</div>
+          <div class="activity-top">
+            <p class="card-title">Brain Busters Trivia Night</p>
+            <span class="badge">Fun</span>
           </div>
+
+          <p class="card-desc">
+            Competitive trivia night with food and prizes.
+          </p>
+
+          <div class="card-cta">View photos</div>
+
         </div>
 
 
         <!-- Calligraphy -->
-        <div class="activity-item" onclick="openActivity('calligraphy')" role="button" tabindex="0">
-          <div class="activity-image">
+        <div class="card activity-card" onclick="openActivity('calligraphy')" role="button" tabindex="0">
+
+          <div class="activity-thumb">
             <img src="doi.png" alt="Calligraphy Night">
           </div>
 
-          <div class="card activity-card">
-            <div class="activity-top">
-              <p class="card-title">Calligraphy Night</p>
-              <span class="badge">Art</span>
-            </div>
-            <p class="card-desc">
-              Exploring Vietnamese calligraphy and cultural art.
-            </p>
-            <div class="card-cta">View photos</div>
+          <div class="activity-top">
+            <p class="card-title">Calligraphy Night</p>
+            <span class="badge">Art</span>
           </div>
+
+          <p class="card-desc">
+            Exploring Vietnamese calligraphy and cultural art.
+          </p>
+
+          <div class="card-cta">View photos</div>
+
         </div>
 
       </div>
+
     </div>
 
     <!-- RIGHT: PROJECTS -->
@@ -1982,6 +2006,7 @@ form.addEventListener("submit", async (e)=>{
 
 </body>
 </html>
+
 
 
 
