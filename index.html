@@ -1159,11 +1159,10 @@ footer{
   width:auto;
 }
 /* ===== NAV GUIDE BUBBLE ===== */
-
 .nav-guide{
   position:fixed;
-  top:70px;
-  left:0;
+  top:70px;                /* just below navbar */
+  left:50%;
   transform:translateX(-50%);
   background:white;
   color:#1b1b1b;
@@ -1173,19 +1172,19 @@ footer{
   font-weight:600;
   box-shadow:0 10px 30px rgba(0,0,0,.35);
   z-index:20000;
-  pointer-events:none;
+  animation:fadeIn .4s ease;
 }
 
-/* arrow pointing to Positions */
+/* arrow pointing to navbar */
 .nav-guide::after{
   content:"";
   position:absolute;
-  bottom:-8px;
+  top:-8px;
   left:50%;
-  transform:translateX(-50%);
+  transform:translateX(-40%);
   border-left:8px solid transparent;
   border-right:8px solid transparent;
-  border-top:8px solid white;
+  border-bottom:8px solid white;
 }
 
 /* highlight the Positions button */
@@ -2077,6 +2076,7 @@ setTimeout(()=>{
 
 </body>
 </html>
+
 
 
 
