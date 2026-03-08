@@ -1162,8 +1162,8 @@ footer{
 
 .nav-guide{
   position:fixed;
-  top:70px;                /* just below navbar */
-  left:50%;
+  top:70px;
+  left:0;
   transform:translateX(-50%);
   background:white;
   color:#1b1b1b;
@@ -1173,19 +1173,19 @@ footer{
   font-weight:600;
   box-shadow:0 10px 30px rgba(0,0,0,.35);
   z-index:20000;
-  animation:fadeIn .4s ease;
+  pointer-events:none;
 }
 
-/* arrow pointing to navbar */
+/* arrow pointing to Positions */
 .nav-guide::after{
   content:"";
   position:absolute;
-  top:-8px;
+  bottom:-8px;
   left:50%;
   transform:translateX(-50%);
   border-left:8px solid transparent;
   border-right:8px solid transparent;
-  border-bottom:8px solid white;
+  border-top:8px solid white;
 }
 
 /* highlight the Positions button */
@@ -2072,11 +2072,12 @@ posLink.classList.add("nav-highlight");
 setTimeout(()=>{
   if(guide) guide.remove();
   posLink.classList.remove("nav-highlight");
-}, 1200000); // 20 minutes
+}, 8000); // 20 minutes
 </script>
 
 </body>
 </html>
+
 
 
 
